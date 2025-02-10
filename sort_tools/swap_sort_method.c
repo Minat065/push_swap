@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   swap_sort_method.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mirokugo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mirokugo <mirokugo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/09 21:40:10 by mirokugo          #+#    #+#             */
-/*   Updated: 2025/02/09 21:46:25 by mirokugo         ###   ########.fr       */
+/*   Created: 2025/02/10 20:00:48 by mirokugo          #+#    #+#             */
+/*   Updated: 2025/02/10 20:07:05 by mirokugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include	"./src/libft.h"
+#include	"../utils/libft.h"
+#include	"../sort_tools/sort_tools.h"
 
-#define MAX_SIZE 100
-
-typedef struct s_stack
+void    swap(t_stack *s)
 {
-	int	data[MAX_SIZE];
-	int	top;
-}	t_Stack;
+    int tmp;
 
-void	inin(Stack *s)
-{
-	s->top = -1;
-}
+    if (s->top <= 1)
+        return ;
 
-int	is_emty(Stack *s)
-{
-	return (s->top == -1);
+    tmp = s->data[s->top];
+    s->data[s->top] = s->data[s->top - 1];
+    s->data[s->top - 1] = tmp;
 }
