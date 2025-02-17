@@ -35,9 +35,11 @@ $(TEST): $(LIBFT) $(OBJS) $(TEST_OBJS)
 	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(TEST_OBJS) $(LIBFT) -o $(TEST)
 
 clean:
+	$(MAKE) -C $(LIBFT_DIR) clean
 	rm -f $(OBJS) $(TEST_OBJS)
 
 fclean: clean
+	$(MAKE) -C $(LIBFT_DIR) fclean
 	rm -f $(NAME) $(TEST)
 
 re: fclean all
