@@ -6,13 +6,13 @@
 /*   By: mirokugo <mirokugo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 21:40:10 by mirokugo          #+#    #+#             */
-/*   Updated: 2025/02/10 20:05:56 by mirokugo         ###   ########.fr       */
+/*   Updated: 2025/02/17 16:28:36 by mirokugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include	"./utils/libft.h"
-#include	"./sort_tools/sort_tools.h"
+#include	"../src/utils_libft/libft.h"
+#include	"../includes/push_swap.h"
 
 int	is_emty(t_stack *s)
 {

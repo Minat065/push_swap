@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_stack.c                                       :+:      :+:    :+:   */
+/*   pop.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mirokugo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mirokugo <mirokugo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/10 17:53:40 by mirokugo          #+#    #+#             */
-/*   Updated: 2025/02/10 17:54:23 by mirokugo         ###   ########.fr       */
+/*   Created: 2025/02/10 17:56:41 by mirokugo          #+#    #+#             */
+/*   Updated: 2025/02/17 16:43:11 by mirokugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../sort_tools/sort_tools.h"
+#include "../../includes/push_swap.h"
 
-void	init(t_stack *s)
+int	pop(t_stack *s)
 {
-	s->top = -1;
+	if (s->top < 0)
+	{
+		printf("スタックのアンダーフロー");
+		return (-1);
+	}
+	return (s->data[(s->top)--]);
 }

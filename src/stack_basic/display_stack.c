@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   display_stack.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mirokugo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mirokugo <mirokugo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 17:57:57 by mirokugo          #+#    #+#             */
-/*   Updated: 2025/02/10 17:59:38 by mirokugo         ###   ########.fr       */
+/*   Updated: 2025/02/17 16:42:05 by mirokugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "../sort_tools/sort_tools.h"
+#include "../../includes/push_swap.h"
 
 void	display_stack(t_stack *s)
 {

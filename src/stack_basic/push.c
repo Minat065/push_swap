@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pop.c                                              :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mirokugo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mirokugo <mirokugo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/10 17:56:41 by mirokugo          #+#    #+#             */
-/*   Updated: 2025/02/10 17:57:16 by mirokugo         ###   ########.fr       */
+/*   Created: 2025/02/10 17:55:16 by mirokugo          #+#    #+#             */
+/*   Updated: 2025/02/17 16:43:20 by mirokugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../sort_tools/sort_tools.h"
+#include "../../includes/push_swap.h"
 
-int	pop(t_stack *s)
+int	push(t_stack *s, int value)
 {
-	if (s->top < 0)
+	if (s->top >= MAX_SIZE - 1)
 	{
-		printf("スタックのアンダーフロー");
+		printf("stack is overflow");
 		return (-1);
 	}
-	return (s->data[(s->top)--]);
+	s->data[++(s->top)] = value;
+	return (0);
 }

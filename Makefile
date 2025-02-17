@@ -1,34 +1,45 @@
+NAME = push_swap
+TEST = test_push_swap
+LIBFT_DIR = ./src/utils_libft
+LIBFT = $(LIBFT_DIR)/libft.a
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Wextra -Werror
+INCLUDES = -I./includes
 AR = ar
 ARFLAGS = rc
 
-SRCS = test_main.c
-SORT_SRCS = $(wildcard sort_tools/*.c)
+SRCS = $(wildcard src/*.c) \
+	$(wildcard src/stack_basic/*.c) \
+	$(wildcard src/operations/*.c) \
+    $(wildcard src/sort/*.c)
+TEST_SRCS = $(wildcard tests/*.c)
+
 OBJS = $(SRCS:.c=.o)
-SORT_OBJS = $(SORT_SRCS:.c=.o)
-LIBFT = utils/libft.a
-NAME = test
+TEST_OBJS = $(TEST_SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(SORT_OBJS)
-	$(CC) $(CFLAGS) -o $@ $^ $(LIBFT)
-
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
-$(OBJS) $(SORT_OBJS): $(LIBFT)
-
 $(LIBFT):
-	make -C utils
+	$(MAKE) -C $(LIBFT_DIR)
+
+# .cから.oを作るルールを追加
+%.o: %.c
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+$(NAME): $(LIBFT) $(OBJS)
+	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LIBFT) -o $(NAME)
+
+test: $(TEST)
+
+$(TEST): $(LIBFT) $(OBJS) $(TEST_OBJS)
+	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(TEST_OBJS) $(LIBFT) -o $(TEST)
 
 clean:
-	rm -f $(OBJS) $(SORT_OBJS)
+	rm -f $(OBJS) $(TEST_OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(TEST)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re test

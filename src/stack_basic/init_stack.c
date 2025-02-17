@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   init_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mirokugo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mirokugo <mirokugo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/10 17:55:16 by mirokugo          #+#    #+#             */
-/*   Updated: 2025/02/10 17:56:20 by mirokugo         ###   ########.fr       */
+/*   Created: 2025/02/10 17:53:40 by mirokugo          #+#    #+#             */
+/*   Updated: 2025/02/17 16:43:04 by mirokugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../sort_tools/sort_tools.h"
+#include "../../includes/push_swap.h"
 
-int	push(t_stack *s, int value)
+void	init(t_stack *s)
 {
-	if (s->top >= MAX_SIZE - 1)
-	{
-		printf("stack is overflow");
-		return (-1);
-	}
-	s->data[++(s->top)] = value;
-	return (0);
+	s->top = -1;
 }
