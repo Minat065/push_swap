@@ -3,7 +3,7 @@ TEST = test_push_swap
 LIBFT_DIR = ./src/utils_libft
 LIBFT = $(LIBFT_DIR)/libft.a
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 INCLUDES = -I./includes
 AR = ar
 ARFLAGS = rc
@@ -36,6 +36,12 @@ test: $(TEST)
 $(TEST): $(LIBFT) $(OBJS) $(TEST_OBJS)
 	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(TEST_OBJS) $(LIBFT) -o $(TEST)
 
+debag: CFLAGS += -g
+debag: re
+
+valgrind: debag
+	valgrind --leak-check=full ./$(TEST) 1 2 3 4 5
+
 clean:
 	$(MAKE) -C $(LIBFT_DIR) clean
 	rm -f $(OBJS) $(TEST_OBJS)
@@ -46,4 +52,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re test
+.PHONY: all clean fclean re test debag valgrind

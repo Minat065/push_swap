@@ -6,18 +6,15 @@
 /*   By: mirokugo <mirokugo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 21:40:10 by mirokugo          #+#    #+#             */
-/*   Updated: 2025/02/18 17:28:25 by mirokugo         ###   ########.fr       */
+/*   Updated: 2025/02/21 16:47:29 by mirokugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 #include	"../src/utils_libft/libft.h"
 #include	"../includes/push_swap.h"
-
-int	is_emty(t_stack *s)
-{
-	return (s->top == -1);
-}
 
 int	main(int argc, char *argv[])
 {
@@ -30,9 +27,12 @@ int	main(int argc, char *argv[])
 
 	if (argc < 2)
 	{
-		printf("コマンドライン引数が不足している");
+		printf("command line arguments are missing");
 		return 1;
 	}
+
+	stack_a.data = (int *)malloc(sizeof(int) * argc);
+	stack_b.data = (int *)malloc(sizeof(int) * argc);
 
 	i = 0;
 	while (i < argc)
@@ -56,6 +56,9 @@ int	main(int argc, char *argv[])
 
 	ft_printf("stack b: ");
 	display_stack(&stack_b);
+
+	free(stack_a.data);
+	free(stack_b.data);
 	return 0;
 }
 
