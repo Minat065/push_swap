@@ -6,7 +6,7 @@
 /*   By: mirokugo <mirokugo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 21:40:10 by mirokugo          #+#    #+#             */
-/*   Updated: 2025/02/17 16:28:36 by mirokugo         ###   ########.fr       */
+/*   Updated: 2025/02/18 17:28:25 by mirokugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,11 @@ int	is_emty(t_stack *s)
 int	main(int argc, char *argv[])
 {
 	int	i;
-	t_stack stack;
+	t_stack stack_a;
+	t_stack stack_b;
 
-	init(&stack);
+	init(&stack_a);
+	init(&stack_b);
 
 	if (argc < 2)
 	{
@@ -35,13 +37,25 @@ int	main(int argc, char *argv[])
 	i = 0;
 	while (i < argc)
 	{
-		stack.data[++stack.top] = ft_atoi(&argv[i][0]);
+		stack_a.data[++stack_a.top] = ft_atoi(&argv[i][0]);
 		i++;
 	}
+	
+	ft_printf("swap\n");
+	ft_printf("stack a: ");
+	display_stack(&stack_a);
 
-	swap(&stack);
-	display_stack(&stack);
+	ft_printf("stack b: ");
+	display_stack(&stack_b);
 
+	ft_printf("push a to b\n");
+	push_atob(&stack_a, &stack_b);
+
+	ft_printf("stack a: ");
+	display_stack(&stack_a);
+
+	ft_printf("stack b: ");
+	display_stack(&stack_b);
 	return 0;
 }
 

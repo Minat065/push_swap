@@ -6,7 +6,7 @@
 /*   By: mirokugo <mirokugo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:53:41 by mirokugo          #+#    #+#             */
-/*   Updated: 2024/04/29 21:24:45 by mirokugo         ###   ########.fr       */
+/*   Updated: 2024/06/16 16:06:16 by mirokugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,3 +93,18 @@ char	**ft_split(char const *s, char c)
 	result[j] = NULL;
 	return (result);
 }
+
+// int main(void)
+// {
+// 	char *str = "1234a12aa12321";
+// 	char set = '1';
+
+// 	char **result = ft_split(str, set);
+// 	int i = 0;
+// 	while (result[i])
+// 	{
+// 		printf("%s\n", result[i]);
+// 		i++;
+// 	}
+// 	return (0);
+// }

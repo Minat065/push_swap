@@ -6,7 +6,7 @@
 /*   By: mirokugo <mirokugo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 18:26:57 by mirokugo          #+#    #+#             */
-/*   Updated: 2024/05/03 17:41:43 by mirokugo         ###   ########.fr       */
+/*   Updated: 2024/06/23 15:05:40 by mirokugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	ft_putstr_fd(s, fd);
-	ft_putchar_fd('\n', fd);
+	ft_putstr_fd(s, fd, 0);
+	ft_putchar_fd('\n', fd, 0);
 }

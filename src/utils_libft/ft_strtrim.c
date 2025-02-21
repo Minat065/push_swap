@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mirokugo <mirokugo@student.42tokyo.jp>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+        
+	+:+     */
+/*   By: mirokugo <mirokugo@student.42tokyo.jp>     +#+  +:+      
+	+#+        */
+/*                                                +#+#+#+#+#+  
+	+#+           */
 /*   Created: 2024/04/21 17:02:53 by mirokugo          #+#    #+#             */
 /*   Updated: 2024/05/03 17:51:21 by mirokugo         ###   ########.fr       */
 /*                                                                            */
@@ -16,14 +19,12 @@ char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*result;
 	size_t	s1_len;
-	size_t	set_len;
 	size_t	start;
 	size_t	end;
 
 	if (!s1 || !set)
 		return (NULL);
 	s1_len = ft_strlen(s1);
-	set_len = ft_strlen(set);
 	start = 0;
 	while (start < s1_len && ft_strchr(set, s1[start]))
 		start++;

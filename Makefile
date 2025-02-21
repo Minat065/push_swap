@@ -12,7 +12,9 @@ SRCS = $(wildcard src/*.c) \
 	$(wildcard src/stack_basic/*.c) \
 	$(wildcard src/operations/*.c) \
     $(wildcard src/sort/*.c)
-TEST_SRCS = $(wildcard tests/*.c)
+TEST_SRCS = $(wildcard tests/*.c) \
+	$(wildcard tests/basic_stack_test/*.c) \
+	$(wildcard tests/op_test/*.c) \
 
 OBJS = $(SRCS:.c=.o)
 TEST_OBJS = $(TEST_SRCS:.c=.o)

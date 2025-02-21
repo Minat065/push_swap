@@ -6,7 +6,7 @@
 /*   By: mirokugo <mirokugo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 17:57:57 by mirokugo          #+#    #+#             */
-/*   Updated: 2025/02/17 16:42:05 by mirokugo         ###   ########.fr       */
+/*   Updated: 2025/02/18 18:28:48 by mirokugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@ void	display_stack(t_stack *s)
 	}
 	printf("stack contents : \n");
 	i = s->top;
-	while (i > 0)
+	while (i >= 0)
 	{
 		printf("%d\n", s->data[i]);
+		printf("i = %d\n", i);
 		i--;
 	}
 }
