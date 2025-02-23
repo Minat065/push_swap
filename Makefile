@@ -11,10 +11,12 @@ ARFLAGS = rc
 SRCS = $(wildcard src/*.c) \
 	$(wildcard src/stack_basic/*.c) \
 	$(wildcard src/operations/*.c) \
-    $(wildcard src/sort/*.c)
+    $(wildcard src/sort/*.c)\
+	$(wildcard src/utils/*.c)
 TEST_SRCS = $(wildcard tests/*.c) \
-	$(wildcard tests/basic_stack_test/*.c) \
-	$(wildcard tests/op_test/*.c) \
+	$(wildcard tests/unit/*.c) \
+	$(wildcard tests/intergration/*.c)\
+	$(wildcard tests/system/*.c)
 
 OBJS = $(SRCS:.c=.o)
 TEST_OBJS = $(TEST_SRCS:.c=.o)
@@ -36,7 +38,7 @@ test: $(TEST)
 $(TEST): $(LIBFT) $(OBJS) $(TEST_OBJS)
 	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(TEST_OBJS) $(LIBFT) -o $(TEST)
 
-debag: CFLAGS += -g
+
 debag: re
 
 valgrind: debag

@@ -6,7 +6,7 @@
 /*   By: mirokugo <mirokugo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 21:40:10 by mirokugo          #+#    #+#             */
-/*   Updated: 2025/02/21 16:47:29 by mirokugo         ###   ########.fr       */
+/*   Updated: 2025/02/21 18:55:22 by mirokugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <unistd.h>
 #include	"../src/utils_libft/libft.h"
 #include	"../includes/push_swap.h"
+#include	"../includes/tests.h"
 
 int	main(int argc, char *argv[])
 {
@@ -40,25 +41,13 @@ int	main(int argc, char *argv[])
 		stack_a.data[++stack_a.top] = ft_atoi(&argv[i][0]);
 		i++;
 	}
-	
-	ft_printf("swap\n");
-	ft_printf("stack a: ");
-	display_stack(&stack_a);
 
-	ft_printf("stack b: ");
-	display_stack(&stack_b);
+	test_display_stack_when_stack_is_empty(&stack_a);
+	test_display_stack_when_stack_has_one_element(&stack_a);
+	test_display_stack_when_stack_has_two_elements(&stack_a);
+	test_display_stack_when_stack_has_three_elements(&stack_a);
+	test_display_stack_when_stack_has_four_elements(&stack_a);
 
-	ft_printf("push a to b\n");
-	push_atob(&stack_a, &stack_b);
-
-	ft_printf("stack a: ");
-	display_stack(&stack_a);
-
-	ft_printf("stack b: ");
-	display_stack(&stack_b);
-
-	free(stack_a.data);
-	free(stack_b.data);
 	return 0;
 }
 

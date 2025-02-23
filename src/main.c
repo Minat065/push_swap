@@ -6,46 +6,37 @@
 /*   By: mirokugo <mirokugo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 17:48:16 by mirokugo          #+#    #+#             */
-/*   Updated: 2025/02/18 21:14:00 by mirokugo         ###   ########.fr       */
+/*   Updated: 2025/02/23 19:23:35 by mirokugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+//最初はここで大まかな設計を考える
+//なので、中身はさておき、関数名や引数、戻り値の型を決める
+//関数の中身は後で考える
+//関数の中身を考えるときは、テストを書いてから考える
+//テストを書くときは、どのような入力に対してどのような出力が欲しいかを考える
+//テストを書いたら、そのテストを通すように関数を実装する
+
 #include "../includes/push_swap.h"
 
-// int main(int argc, char **argv)
-// {
-//     int i;
-// 	t_stack stack_a;
-// 	t_stack stack_b;
+int main(int argc, char **argv)
+{
+	t_stack stack_a;
+	t_stack stack_b;
 
-//     stack_a.data = (int *)malloc(sizeof(int) * argc);
-//     stack_b.data = (int *)malloc(sizeof(int) * argc);
+    if (argc < 2)
+        exit(1);
 
-// 	init(&stack_a);
-// 	init(&stack_b);
+    init_stack(&stack_a, argc - 1);
+    init_stack(&stack_b, argc - 1);
+    init_a_input_elements(&stack_a, argc, argv);
 
-//     if (argc < 2)
-// 	{
-// 		printf("command line arguments are missing");
-// 		return 1;
-// 	}
+    //push_swap(&stack_a, &stack_b);
 
-//     i = 0;
-// 	while (i < argc)
-// 	{
-// 		stack_a.data[++stack_a.top] = ft_atoi(&argv[i][0]);
-// 		i++;
-// 	}
+    display_stack(&stack_a);
 
-//     ft_printf("check of pa + pb\n");
-// 	push_atob(&stack_a, &stack_b);
-// 	push_atob(&stack_a, &stack_b);
-// 	display_stack(&stack_a);
-// 	display_stack(&stack_b);
-// 	ft_printf("top number of stack a: %d\n", stack_a.top);
-// 	ft_printf("top number of stack b: %d\n", stack_b.top);
+    free(stack_a.data);
+    free(stack_b.data);
 
-
-//     return 0;
-
-// }
+    return (0);
+}
