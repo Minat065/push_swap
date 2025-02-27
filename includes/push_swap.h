@@ -6,7 +6,7 @@
 /*   By: mirokugo <mirokugo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:26:30 by mirokugo          #+#    #+#             */
-/*   Updated: 2025/02/23 20:40:01 by mirokugo         ###   ########.fr       */
+/*   Updated: 2025/02/26 18:35:00 by mirokugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_stack
 }	t_stack;
 
 void	init_stack(t_stack *s, int size);
-void	display_stack(t_stack *s);
+void	display_stack(t_stack *a, t_stack *b);
 int     push(t_stack *s, int n);
 int     pop(t_stack *s);
 void    swap(t_stack *s);
@@ -41,6 +41,7 @@ void    rotate_a(t_stack *stack_a);
 void    rotate_b(t_stack *stack_b);
 void    reverse_rotate_a(t_stack *stack_a);
 void    reverse_rotate_b(t_stack *stack_b);
+int     sort_checker(t_stack *stack_a, t_stack *stack_b);
 
 
 

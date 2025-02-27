@@ -6,7 +6,7 @@
 /*   By: mirokugo <mirokugo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 20:00:48 by mirokugo          #+#    #+#             */
-/*   Updated: 2025/02/23 20:35:29 by mirokugo         ###   ########.fr       */
+/*   Updated: 2025/02/26 18:08:36 by mirokugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void    swap_a(t_stack *stack_a)
     tmp = stack_a->data[stack_a->top];
     stack_a->data[stack_a->top] = stack_a->data[stack_a->top - 1];
     stack_a->data[stack_a->top - 1] = tmp;
+    ft_printf("sa\n");
 }
 
 void    swap_b(t_stack *stack_b)
@@ -34,4 +35,5 @@ void    swap_b(t_stack *stack_b)
     tmp = stack_b->data[stack_b->top];
     stack_b->data[stack_b->top] = stack_b->data[stack_b->top - 1];
     stack_b->data[stack_b->top - 1] = tmp;
+    ft_printf("sb\n");
 }

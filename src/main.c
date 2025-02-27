@@ -6,7 +6,7 @@
 /*   By: mirokugo <mirokugo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 17:48:16 by mirokugo          #+#    #+#             */
-/*   Updated: 2025/02/23 20:44:20 by mirokugo         ###   ########.fr       */
+/*   Updated: 2025/02/26 18:06:24 by mirokugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,27 +31,8 @@ int main(int argc, char **argv)
     init_stack(&stack_b, argc - 1);
     init_a_input_elements(&stack_a, argc, argv);
 
-    //push_swap(&stack_a, &stack_b);
-
-    display_stack(&stack_a);
-
-    reverse_rotate_a(&stack_a);
-    display_stack(&stack_a);
-
-    swap_a(&stack_a);
-    display_stack(&stack_a);
-
-    rotate_a(&stack_a);
-    display_stack(&stack_a);
-    display_stack(&stack_b);
-
-    push_atob(&stack_a, &stack_b);
-    push_atob(&stack_a, &stack_b);
-    push_atob(&stack_a, &stack_b);
-    display_stack(&stack_a);
-    display_stack(&stack_b);
-
-    
+    push_swap(&stack_a, &stack_b);
+    display_stack(&stack_a, &stack_b);
 
     free(stack_a.data);
     free(stack_b.data);

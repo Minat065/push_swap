@@ -6,7 +6,7 @@
 /*   By: mirokugo <mirokugo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 20:36:04 by mirokugo          #+#    #+#             */
-/*   Updated: 2025/02/23 20:37:52 by mirokugo         ###   ########.fr       */
+/*   Updated: 2025/02/26 18:09:17 by mirokugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void    rotate_a(t_stack *stack_a)
         i--;
     }
     stack_a->data[0] = tmp;
+    ft_printf("ra\n");
 }
 
 void    rotate_b(t_stack *stack_b)
@@ -44,6 +45,7 @@ void    rotate_b(t_stack *stack_b)
         i--;
     }
     stack_b->data[0] = tmp;
+    ft_printf("rb\n");
 }
 
 void    reverse_rotate_a(t_stack *stack_a)
@@ -61,6 +63,7 @@ void    reverse_rotate_a(t_stack *stack_a)
         i++;
     }
     stack_a->data[stack_a->top] = tmp;
+    ft_printf("rra\n");
 }
 
 void    reverse_rotate_b(t_stack *stack_b)
@@ -78,4 +81,5 @@ void    reverse_rotate_b(t_stack *stack_b)
         i++;
     }
     stack_b->data[stack_b->top] = tmp;
+    ft_printf("rrb\n");
 }
