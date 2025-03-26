@@ -1,57 +1,83 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mirokugo <mirokugo@student.42tokyo.jp>     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/03/26 14:49:56 by mirokugo          #+#    #+#              #
+#    Updated: 2025/03/26 16:54:09 by mirokugo         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = push_swap
-TEST = test_push_swap
-LIBFT_DIR = ./src/utils_libft
-LIBFT = $(LIBFT_DIR)/libft.a
+
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
-INCLUDES = -I./includes
-AR = ar
-ARFLAGS = rc
+CFLAGS = -Wall -Wextra -Werror
+INCLUDES = -I./includes -I./libft/includes
 
-SRCS = $(wildcard src/*.c) \
-	$(wildcard src/stack_basic/*.c) \
-	$(wildcard src/operations/*.c) \
-    $(wildcard src/sort/*.c)\
-	$(wildcard src/utils/*.c)
-TEST_SRCS = $(wildcard tests/*.c) \
-	$(wildcard tests/unit/*.c) \
-	$(wildcard tests/intergration/*.c)\
-	$(wildcard tests/system/*.c)
+# Source files
+SRCS_DIR = srcs
+SRCS = 	$(SRCS_DIR)/main.c
 
+# Object files
 OBJS = $(SRCS:.c=.o)
-TEST_OBJS = $(TEST_SRCS:.c=.o)
+
+# libft
+LIBFT_DIR = libft
+LIBFT = $(LIBFT_DIR)/libft.a
+
+# Colors for output
+GREEN = \033[0;32m
+RESET = \033[0m
 
 all: $(NAME)
 
+# Compile libft first
 $(LIBFT):
-	$(MAKE) -C $(LIBFT_DIR)
+	@echo "$(GREEN)Compiling libft...$(RESET)"
+	@make -C $(LIBFT_DIR)
 
-# .cから.oを作るルールを追加
-%.o: %.c
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-
+# Compile push_swap
 $(NAME): $(LIBFT) $(OBJS)
-	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LIBFT) -o $(NAME)
+	@echo "$(GREEN)Linking push_swap...$(RESET)"
+	@$(CC) $(CFLAGS) $(INCLUDES) -o $(NAME) $(OBJS) -L$(LIBFT_DIR) -lft
+	@echo "$(GREEN)push_swap compiled successfully!$(RESET)"
 
-test: $(TEST)
-
-$(TEST): $(LIBFT) $(OBJS) $(TEST_OBJS)
-	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(TEST_OBJS) $(LIBFT) -o $(TEST)
-
-
-debag: re
-
-valgrind: debag
-	valgrind --leak-check=full ./$(TEST) 1 2 3 4 5
+# Compile individual source files
+%.o: %.c
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	$(MAKE) -C $(LIBFT_DIR) clean
-	rm -f $(OBJS) $(TEST_OBJS)
+	@echo "$(GREEN)Cleaning object files...$(RESET)"
+	@make -C $(LIBFT_DIR) clean
+	@rm -f $(OBJS)
 
 fclean: clean
-	$(MAKE) -C $(LIBFT_DIR) fclean
-	rm -f $(NAME) $(TEST)
+	@echo "$(GREEN)Cleaning executables...$(RESET)"
+	@make -C $(LIBFT_DIR) fclean
+	@rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re test debag valgrind
+# Debug mode with additional flags
+debug: CFLAGS += -g -DDEBUG=1
+debug: re
+	@echo "$(GREEN)Debug build completed!$(RESET)"
+
+# Test target
+test: $(NAME)
+	@echo "$(GREEN)Running tests...$(RESET)"
+	@bash tests/run_tests.sh
+
+# Valgrind target for memory leak detection
+valgrind: $(NAME)
+	@echo "$(GREEN)Running Valgrind memory check...$(RESET)"
+	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME) 3 2 1
+
+# Comprehensive Valgrind testing with various test cases
+valgrind_full: $(NAME)
+	@echo "$(GREEN)Running comprehensive Valgrind tests...$(RESET)"
+	@bash tests/valgrind_test.sh
+
+.PHONY: all clean fclean re debug test
