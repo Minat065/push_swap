@@ -6,7 +6,7 @@
 /*   By: mirokugo <mirokugo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 17:48:16 by mirokugo          #+#    #+#             */
-/*   Updated: 2025/02/26 18:06:24 by mirokugo         ###   ########.fr       */
+/*   Updated: 2025/03/12 16:51:06 by mirokugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,26 @@
 
 int main(int argc, char **argv)
 {
-	t_stack stack_a;
-	t_stack stack_b;
-
+    t_stack stack_a;
+    t_stack stack_b;
+    
+    // 引数チェック
     if (argc < 2)
-        exit(1);
-
+        return (0);
+    
+    // スタックの初期化
     init_stack(&stack_a, argc - 1);
     init_stack(&stack_b, argc - 1);
+    
+    // 入力要素をスタックAに格納
     init_a_input_elements(&stack_a, argc, argv);
-
+    
+    // ソートアルゴリズムの実行
     push_swap(&stack_a, &stack_b);
-    display_stack(&stack_a, &stack_b);
-
+    
+    // メモリの解放
     free(stack_a.data);
     free(stack_b.data);
-
+    
     return (0);
 }
