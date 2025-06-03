@@ -17,13 +17,14 @@ int is_sorted(t_stack *stack)
     int i;
     
     if (stack->top <= 0)
-        return 1; // 空またはスタックに1つの要素の場合はソート済み
+        return 1;
     
-    // スタックが昇順でソートされているかチェック（下から上へ）
-    for (i = 0; i < stack->top; i++)
+    // Check if stack is sorted: smallest at top (stack->data[top]), largest at bottom
+    // Each element should be <= next element down
+    for (i = stack->top; i > 0; i--)
     {
-        if (stack->data[i] > stack->data[i+1])
-            return 0; // スタックは昇順でないため、ソートされていない
+        if (stack->data[i] > stack->data[i-1])
+            return 0;
     }
-    return 1; // すべての要素がチェックされ、スタックはソートされている
+    return 1;
 }

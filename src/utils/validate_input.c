@@ -17,6 +17,14 @@ void	validate_int(char *str)
 	int	i;
 
     i = 0;
+    
+    // 空文字列チェック
+    if (!str || !str[0])
+    {
+        write(2, "Error\n", 6);
+        exit(1);
+    }
+    
 	while (str[i])
 	{
 		if (i == 0 && (str[i] == '-' || str[i] == '+'))
@@ -28,11 +36,18 @@ void	validate_int(char *str)
 		}
         i++;
 	}
+	
+	// 符号のみの場合（"+"や"-"だけ）
+	if (i == 1 && (str[0] == '-' || str[0] == '+'))
+	{
+		write(2, "Error\n", 6);
+		exit(1);
+	}
 }
 
 void	validate_over_underflow(char *str)
 {
-	long long	num;
+	long	num;
 
 	num = ft_strtol(str);
 	if (num > 2147483647 || num < -2147483648)
@@ -46,8 +61,11 @@ void	validate_duplicated(t_stack *stack, int n)
 {
 	int	i;
 
+	if (stack->top < 0)
+		return;
+		
 	i = 0;
-	while (i < stack->top)
+	while (i <= stack->top)
 	{
 		if (stack->data[i] == n)
 		{

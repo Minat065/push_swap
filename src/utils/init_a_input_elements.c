@@ -18,57 +18,17 @@
 void init_a_input_elements(t_stack *stack_a, int argc, char **argv)
 {
     int i;
-    char **split_args;
     
     stack_a->top = -1; // スタックを空に初期化
     
-    // 引数が1つだけの場合（空白区切りの数値列）
-    if (argc == 2 && ft_strchr(argv[1], ' '))
+    // 引数を逆順にスタックに格納（トップが先頭要素になるように）
+    for (i = argc - 1; i > 0; i--)
     {
-        split_args = ft_split(argv[1], ' ');
-        if (!split_args)
+        validate_input(argv[i], stack_a);
+        if (!push(stack_a, ft_atoi(argv[i])))
         {
             write(2, "Error\n", 6);
             exit(EXIT_FAILURE);
-        }
-        
-        // 分割された引数を逆順にスタックに格納（トップが先頭要素になるように）
-        i = 0;
-        while (split_args[i])
-            i++;
-            
-        for (i = i - 1; i >= 0; i--)
-        {
-            validate_input(split_args[i], stack_a);
-            if (!push(stack_a, ft_atoi(split_args[i])))
-            {
-                // メモリ解放
-                int j = 0;
-                while (split_args[j])
-                {
-                    if (j != i) // 現在処理中の要素は解放しない
-                        free(split_args[j]);
-                    j++;
-                }
-                free(split_args);
-                write(2, "Error\n", 6);
-                exit(EXIT_FAILURE);
-            }
-            free(split_args[i]);
-        }
-        free(split_args);
-    }
-    else
-    {
-        // 複数の引数の場合、引数を逆順にスタックに格納
-        for (i = argc - 1; i > 0; i--)
-        {
-            validate_input(argv[i], stack_a);
-            if (!push(stack_a, ft_atoi(argv[i])))
-            {
-                write(2, "Error\n", 6);
-                exit(EXIT_FAILURE);
-            }
         }
     }
 }

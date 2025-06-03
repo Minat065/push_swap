@@ -6,7 +6,7 @@
 /*   By: mirokugo <mirokugo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:26:30 by mirokugo          #+#    #+#             */
-/*   Updated: 2025/03/12 16:27:03 by mirokugo         ###   ########.fr       */
+/*   Updated: 2025/06/03 23:01:40 by mirokugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,37 @@ void    rank_normalize(t_stack *stack);
 int     is_sorted(t_stack *stack);
 void    radix_sort(t_stack *stack_a, t_stack *stack_b);
 void    restore_original_values(t_stack *stack, int *original_values);
+void    sort_two(t_stack *a);
+void    sort_four(t_stack *a, t_stack *b);
+void    sort_five(t_stack *a, t_stack *b);
+void    optimized_sort(t_stack *a, t_stack *b);
+void    chunk_sort(t_stack *a, t_stack *b);
+void    turbo_sort(t_stack *a, t_stack *b);
+void    efficient_sort(t_stack *a, t_stack *b);
+void    push_a(t_stack *src, t_stack *dst);
+void    push_b(t_stack *src, t_stack *dst);
+void    ultra_sort(t_stack *a, t_stack *b);
+void    lis_sort(t_stack *a, t_stack *b);
+void    super_radix_sort(t_stack *a, t_stack *b);
+void    turk_algorithm(t_stack *a, t_stack *b);
+void    enhanced_radix_sort(t_stack *a, t_stack *b);
+void    perfect_turk(t_stack *a, t_stack *b);
+void    optimized_radix(t_stack *a, t_stack *b);
+void    minimal_radix(t_stack *a, t_stack *b);
+void    parallel_radix(t_stack *a, t_stack *b);
+void    ultimate_sort(t_stack *a, t_stack *b);
+void    operation_driven_sort(t_stack *a, t_stack *b);
+void    cost_based_radix_sort(t_stack *a, t_stack *b);
+void    adaptive_sort(t_stack *a, t_stack *b);
+void    stable_sort(t_stack *a, t_stack *b);
+void    hybrid_sort(t_stack *a, t_stack *b);
+void    guaranteed_sort(t_stack *a, t_stack *b);
+void    ultra_efficient_500(t_stack *a, t_stack *b);
+void    improved_operation_driven_sort(t_stack *a, t_stack *b);
+void    ultra_improved_sort(t_stack *a, t_stack *b);
+void    precision_cost_sort(t_stack *a, t_stack *b);
+void    dp_enhanced_sort(t_stack *a, t_stack *b);
+void    simple_dp_sort(t_stack *a, t_stack *b);
 
 
 #endif
