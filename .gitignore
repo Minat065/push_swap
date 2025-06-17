@@ -1,0 +1,43 @@
+# Object files
+obj/
+*.o
+
+# Executables
+push_swap
+checker_linux
+run_tests
+
+# Test files and temporary files
+/tmp/push_swap_test.txt
+*.tmp
+
+# IDE and editor files
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Debugging files
+*.dSYM/
+*.gch
+*.pch
+
+# Build artifacts
+*.a
+*.so
+*.dylib
+
+# Log files
+*.log
+
+# Personal notes (if any)
+notes.txt
+TODO.txt
+subject.md
+the-norm-md.md
+algorithm_strategy.md
+CLAUDE.md
+
+# Test directory
+tests/
