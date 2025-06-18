@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_helpers3.c                                    :+:      :+:    :+:   */
+/*   cost_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: student <student@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,43 +12,19 @@
 
 #include "../../../includes/push_swap.h"
 
-void	turkish_sort(t_stack *a, t_stack *b)
+t_cost	calculate_cost(t_stack *a, t_stack *b, int b_pos)
 {
-	t_cost	cheapest;
-	int		min_pos;
+	t_cost	cost;
+	int		value;
+	int		target_pos;
 
-	if (!a || !b || a->size <= 3)
-		return ;
-	if (is_sorted(a))
-		return ;
-	while (a->size > 3)
-		pb(a, b, 1);
-	sort_three(a);
-	while (b->size > 0)
-	{
-		cheapest = find_cheapest_move(a, b);
-		execute_moves(a, b, cheapest);
-	}
-	min_pos = find_min_position(a);
-	smart_rotate_a(a, min_pos);
-}
-
-void	turkish_sort_optimized(t_stack *a, t_stack *b)
-{
-	t_cost	cheapest;
-	int		min_pos;
-
-	if (!a || !b || a->size <= 3)
-		return ;
-	if (is_sorted(a))
-		return ;
-	smart_push_large(a, b);
-	sort_three(a);
-	while (b->size > 0)
-	{
-		cheapest = find_cheapest_move(a, b);
-		execute_moves(a, b, cheapest);
-	}
-	min_pos = find_min_position(a);
-	smart_rotate_a(a, min_pos);
+	initialize_cost(&cost, b_pos);
+	if (!a || !b || b_pos < 0 || b_pos >= b->size)
+		return (cost);
+	value = get_element_at_position(b, b_pos);
+	target_pos = find_target_position(a, value);
+	calculate_a_moves(&cost, target_pos, a->size);
+	calculate_b_moves(&cost, b_pos, b->size);
+	calculate_total_cost(&cost);
+	return (cost);
 }

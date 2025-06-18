@@ -85,21 +85,9 @@ void	sort_three(t_stack *a);
 void	sort_four(t_stack *a, t_stack *b);
 void	sort_five(t_stack *a, t_stack *b);
 
-/* Radix sort */
-void	radix_sort(t_stack *a, t_stack *b);
-void	assign_indices(t_stack *stack);
-int		get_max_bits(t_stack *stack);
-
-/* Chunk sort */
-void	chunk_sort(t_stack *a, t_stack *b);
-int		get_chunk_size(int total_size);
-void	push_chunks_to_b(t_stack *a, t_stack *b, int chunk_size);
-void	sort_b_to_a(t_stack *a, t_stack *b);
-int		find_target_in_a(t_stack *a, int value);
-
-/* Turkish sort */
-void	turkish_sort(t_stack *a, t_stack *b);
-void	turkish_sort_optimized(t_stack *a, t_stack *b);
+/* Cost-based sorting algorithm */
+void	cost_sort(t_stack *a, t_stack *b);
+void	cost_sort_optimized(t_stack *a, t_stack *b);
 t_cost	calculate_cost(t_stack *a, t_stack *b, int b_pos);
 int		find_target_position(t_stack *a, int value);
 void	execute_moves(t_stack *a, t_stack *b, t_cost cost);
@@ -108,7 +96,7 @@ void	push_small_elements(t_stack *a, t_stack *b, int *push_count,
 			int median);
 int		get_element_at_position(t_stack *stack, int pos);
 
-/* Turkish sort helpers */
+/* Cost calculation helpers */
 void	initialize_cost(t_cost *cost, int b_pos);
 void	calculate_a_moves(t_cost *cost, int target_pos, int a_size);
 void	calculate_b_moves(t_cost *cost, int b_pos, int b_size);
@@ -121,6 +109,9 @@ int		find_max_position(t_stack *stack);
 void	smart_rotate_a(t_stack *a, int position);
 void	smart_rotate_b(t_stack *b, int position);
 t_cost	find_cheapest_move(t_stack *a, t_stack *b);
+
+/* Index utilities */
+void	assign_indices(t_stack *stack);
 
 /* Utils */
 void	free_split(char **split);

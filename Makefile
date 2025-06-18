@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: student <student@42.fr>                    +#+  +:+       +#+         #
+#    By: mirokugo <mirokugo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/01 00:00:00 by student           #+#    #+#              #
-#    Updated: 2024/01/01 00:00:00 by student          ###   ########.fr        #
+#    Updated: 2025/06/18 22:00:57 by mirokugo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,19 +47,18 @@ OPERATIONS_SRCS = src/operations/swap.c \
                   src/operations/reverse_rotate.c
 
 ALGORITHMS_SRCS = src/algorithms/sort_small.c \
-                  src/algorithms/sort_radix.c \
-                  src/algorithms/sort_chunk.c \
-                  src/algorithms/turkish_sort/turkish_sort.c \
-                  src/algorithms/turkish_sort/turkish_cost.c \
-                  src/algorithms/turkish_sort/turkish_moves.c \
-                  src/algorithms/turkish_sort/turkish_utils.c
+                  src/algorithms/cost_sort/cost_sort.c \
+                  src/algorithms/cost_sort/cost_calculation.c \
+                  src/algorithms/cost_sort/move_execution.c \
+                  src/algorithms/cost_sort/cost_utils.c
 
 UTILS_SRCS = src/utils/utils.c \
              src/utils/utils2.c \
              src/utils/helpers.c \
              src/utils/target_finder.c \
              src/utils/target_finder2.c \
-             src/utils/sort_utils.c
+             src/utils/sort_utils.c \
+             src/utils/index_utils.c
 
 # All source files
 SRCS = $(CORE_SRCS) $(PARSING_SRCS) $(STACK_SRCS) $(OPERATIONS_SRCS) \
@@ -80,15 +79,15 @@ BONUS_OBJS = $(BONUS_SRCS:src/%.c=$(OBJ_DIR)/%.o)
 
 # Test files
 TEST_DIR = tests
-TEST_SRCS = $(TEST_DIR)/test_main.c \
-            $(TEST_DIR)/test_parse.c \
-            $(TEST_DIR)/test_operations.c \
-            $(TEST_DIR)/test_sort_small.c \
-            $(TEST_DIR)/test_sort_radix.c \
-            $(TEST_DIR)/test_sort_chunk.c \
-            $(TEST_DIR)/test_sort_turkish.c
+TEST_SRCS = $(TEST_DIR)/main_test.c \
+            $(TEST_DIR)/test_utilities.c \
+            $(TEST_DIR)/test_parsing.c \
+            $(TEST_DIR)/test_error_handling.c \
+            $(TEST_DIR)/test_sorting_correctness.c \
+            $(TEST_DIR)/test_42_benchmarks.c \
+            $(TEST_DIR)/test_edge_cases.c
 TEST_OBJS = $(TEST_SRCS:$(TEST_DIR)/%.c=$(OBJ_DIR)/%.o)
-TEST_NAME = run_tests
+TEST_NAME = run_comprehensive_tests
 
 # Colors
 GREEN = \033[0;32m
@@ -124,6 +123,7 @@ $(BONUS_NAME): $(BONUS_OBJS)
 	@echo "$(GREEN)✓ $(BONUS_NAME) compiled successfully$(NC)"
 
 test: $(TEST_NAME)
+	@echo "$(YELLOW)🧪 Running comprehensive 42 School compliance tests...$(NC)"
 	@./$(TEST_NAME)
 
 $(TEST_NAME): $(filter-out $(OBJ_DIR)/core/main.o, $(OBJS)) $(TEST_OBJS)

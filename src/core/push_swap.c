@@ -27,7 +27,7 @@ void	push_swap(t_stack *a, t_stack *b)
 	else if (a->size == 5)
 		sort_five(a, b);
 	else if (a->size <= 100)
-		turkish_sort(a, b);
+		cost_sort(a, b);
 	else
-		turkish_sort_optimized(a, b);
+		cost_sort_optimized(a, b);
 }
