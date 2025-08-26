@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: student <student@42.fr>                    +#+  +:+       +#+        */
+/*   By: mirokugo <mirokugo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/01 00:00:00 by student           #+#    #+#             */
-/*   Updated: 2024/01/01 00:00:00 by student          ###   ########.fr       */
+/*   Created: 2025/08/26 20:43:36 by mirokugo          #+#    #+#             */
+/*   Updated: 2025/08/26 20:44:20 by mirokugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../../includes/push_swap.h"
 
@@ -47,7 +48,10 @@ int	main(int argc, char **argv)
 	if (!numbers)
 		return (1);
 	if (!initialize_stacks(&a, &b, numbers))
+	{
+		cleanup_and_exit(a, b, numbers);
 		return (1);
+	}
 	fill_stack(a, numbers, size);
 	free(numbers);
 	if (!is_sorted(a))

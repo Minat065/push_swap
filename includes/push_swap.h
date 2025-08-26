@@ -6,7 +6,7 @@
 /*   By: mirokugo <mirokugo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 01:04:34 by mirokugo          #+#    #+#             */
-/*   Updated: 2025/06/17 01:04:53 by mirokugo         ###   ########.fr       */
+/*   Updated: 2025/08/26 20:50:59 by mirokugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,14 +104,14 @@ void	calculate_abs_values(t_cost *cost, int *abs_a, int *abs_b);
 void	calculate_total_cost(t_cost *cost);
 
 /* Sort utilities */
-int		find_min_position(t_stack *stack);
-int		find_max_position(t_stack *stack);
-void	smart_rotate_a(t_stack *a, int position);
-void	smart_rotate_b(t_stack *b, int position);
-t_cost	find_cheapest_move(t_stack *a, t_stack *b);
+// int		find_min_position(t_stack *stack);
+// int		find_max_position(t_stack *stack);
+// void	smart_rotate_a(t_stack *a, int position);
+// void	smart_rotate_b(t_stack *b, int position);
+// t_cost	find_cheapest_move(t_stack *a, t_stack *b);
 
 /* Index utilities */
-void	assign_indices(t_stack *stack);
+// void	assign_indices(t_stack *stack);
 
 /* Utils */
 void	free_split(char **split);
